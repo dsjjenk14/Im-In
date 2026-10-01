@@ -5,12 +5,15 @@ Migrated from the single-file prototype `hr-blueprint-platform.html`, which is t
 
 ## Stack
 
-Next.js 16 (App Router, TypeScript) · Supabase (Phase 3) · Stripe (Phase 4) · Resend (Phase 5) · Vercel · PWA (Phase 6)
+Next.js 16 (App Router, TypeScript) · Supabase (Postgres, Auth) · Stripe Checkout · Resend · Vercel · PWA
+
+**Going live:** follow [`SETUP.md`](SETUP.md).
 
 ## Run it
 
 ```bash
 npm install
+cp .env.example .env.local   # then fill in keys
 npm run dev      # http://localhost:3000
 npm run build    # production build (uses webpack; see note below)
 npm run lint
@@ -29,13 +32,20 @@ Builds use `--webpack` because the Turbopack font loader fails behind some proxi
 | `src/lib/state.ts` | The progress blob (the prototype's `S`), streak, badge rules |
 | `src/components/views/` | One component per screen, grouped by act |
 | `src/app/globals.css` | The prototype's CSS, unchanged apart from font variables |
+| `supabase/migrations/` | Database tables and row level security |
+| `src/lib/member.ts` | Server side paywall for every member page |
+| `src/lib/billing.ts` | Stripe fulfillment, entitlements, access codes |
+| `src/app/api/` | Checkout, Stripe webhook, sign up, codes, messages |
+| `src/app/admin/` | Admin panel (numbers, members, messages, ads, codes) |
+| `src/app/preview/` | Free beta preview. Imports only Act 1, so paid lessons never ship to it |
+| `public/sw.js` | Service worker for offline reading |
 
 ## Build status
 
 - [x] Phase 0: inventory
 - [x] Phase 1: scaffold and design tokens
 - [x] Phase 2: full journey and every interaction as React (localStorage, like the prototype)
-- [ ] Phase 3: Supabase auth and cross device sync
-- [ ] Phase 4: Stripe, entitlements, server side access
-- [ ] Phase 5: coaching hub, messaging, email, ads, admin
-- [ ] Phase 6: PWA
+- [x] Phase 3: Supabase auth (email and Google) and cross device sync
+- [x] Phase 4: Stripe, entitlements, server side access, one time access codes
+- [x] Phase 5: coaching hub, messaging, email, ads, admin
+- [x] Phase 6: PWA (installable, offline reading, offline edits sync later)

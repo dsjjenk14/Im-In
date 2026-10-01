@@ -163,7 +163,8 @@ export function FootNav({ id }: { id: string }) {
 
 export interface AdConfig { headline: string; text: string; cta: string; url: string }
 
-export function AdSlot({ cfg, slot }: { cfg: AdConfig | null; slot: 1 | 2 }) {
+export function AdSlot({ slot }: { slot: 1 | 2 }) {
+  const cfg = useApp().ads[slot];
   if (cfg && (cfg.headline || "").trim()) {
     return (
       <div className="adslot filled">
@@ -179,7 +180,7 @@ export function AdSlot({ cfg, slot }: { cfg: AdConfig | null; slot: 1 | 2 }) {
       <span className="adlabel">Ad space {slot}</span>
       <div className="adempty">
         <Doodle name="star" size={30} color="#8EDBC2" />
-        <div><b>Your ad here</b><span>A sponsor slot you control. Fill AD_{slot} at the top of the file, or sell this space.</span></div>
+        <div><b>Your ad here</b><span>A sponsor slot. Want to reach people breaking into HR? Get in touch.</span></div>
       </div>
     </div>
   );

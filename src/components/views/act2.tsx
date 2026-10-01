@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { Acc, Band, Bridge, Chk, FootNav, HeroDoodle, Inp, Mark, Note, Rec, TA, Tpl, copyText, downloadDoc, esc } from "../ui";
 import { Squiggle } from "../Doodle";
-import { BulletGame } from "../games";
+import { BulletGame } from "../games/paid";
 import { Rung } from "./act1";
 import { initials, jobCount, txt, type AppState } from "@/lib/state";
 

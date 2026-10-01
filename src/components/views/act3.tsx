@@ -3,9 +3,8 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { AdSlot, Band, Bridge, Chk, ChkItem, FootNav, HeroDoodle, Mark, Note, Rec, Tpl } from "../ui";
 import { Squiggle } from "../Doodle";
-import { ADS } from "@/config/site";
 import { ASTAGES, NSTAGES } from "@/lib/journey";
-import { PLAN_WEEKS } from "@/lib/content";
+import { PLAN_WEEKS } from "@/lib/content/paid";
 import { txt } from "@/lib/state";
 
 /* ───── STEP 11 · 90-DAY SEARCH PLAN ───── */
@@ -270,7 +269,7 @@ export function Apply() {
           })}
         </div>
       </div>
-      <AdSlot cfg={ADS[2]} slot={2} />
+      <AdSlot slot={2} />
       <FootNav id="apply" />
     </>
   );

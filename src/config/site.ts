@@ -25,11 +25,4 @@ export const CONTACT = {
   site: "https://hiredominique.com",
 };
 
-/** Beta preview: only these steps are open. Everything else shows the join card. */
-export const BETA_OPEN_ACTS = ["Act 1 · Decide"];
 
-/** Ad slots. Slot 1 = dashboard, slot 2 = Application Strategy. Phase 5 moves these to the admin panel. */
-export const ADS: Record<1 | 2, { headline: string; text: string; cta: string; url: string } | null> = {
-  1: null,
-  2: null,
-};

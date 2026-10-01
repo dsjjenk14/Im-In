@@ -1,12 +1,6 @@
 import { notFound } from "next/navigation";
 import { VIEW_IDS, viewMeta, type ViewId } from "@/lib/journey";
-import { ViewSwitch } from "@/components/views/ViewSwitch";
-
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return VIEW_IDS.filter((v) => v !== "dashboard").map((view) => ({ view }));
-}
+import { MEMBER_VIEWS } from "@/components/views/memberViews";
 
 export async function generateMetadata({ params }: { params: Promise<{ view: string }> }) {
   const { view } = await params;
@@ -16,6 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ view: str
 
 export default async function ViewPage({ params }: { params: Promise<{ view: string }> }) {
   const { view } = await params;
-  if (!VIEW_IDS.includes(view as ViewId)) notFound();
-  return <ViewSwitch id={view as ViewId} />;
+  if (!VIEW_IDS.includes(view as ViewId) || view === "dashboard") notFound();
+  const V = MEMBER_VIEWS[view as ViewId];
+  return <V />;
 }

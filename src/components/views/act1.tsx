@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { Acc, Band, Bridge, Chk, FootNav, HeroDoodle, Mark, Note, Rec, TA } from "../ui";
 import { Squiggle } from "../Doodle";
-import { ChoiceGame } from "../games";
+import { ChoiceGame } from "../games/choice";
 import { firstName } from "@/lib/state";
-import { DECODE_MAP, DECODE_QZ, IND_OPEN, QZ, QZR } from "@/lib/content";
+import { DECODE_MAP, DECODE_QZ, IND_OPEN, QZ, QZR } from "@/lib/content/act1";
 
 /* ───── STEP 1 · WELCOME ───── */
 export function Welcome() {

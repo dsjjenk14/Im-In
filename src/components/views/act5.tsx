@@ -5,6 +5,7 @@ import { Band, Bridge, Chk, FootNav, HeroDoodle, Mark, Note, Rec, TA, Tpl } from
 import { Doodle, Squiggle } from "../Doodle";
 import { BADGES } from "@/lib/journey";
 import { firstName } from "@/lib/state";
+import { BadgeGrid } from "../BadgeGrid";
 
 /* ───── STEP 19 · SURVIVING YOUR FIRST YEAR ───── */
 export function FirstYear() {
@@ -74,19 +75,6 @@ export function FirstYear() {
       </div>
       <FootNav id="firstyear" />
     </>
-  );
-}
-
-export function BadgeGrid() {
-  const { S } = useApp();
-  return (
-    <div className="badge-grid">
-      {BADGES.map((b) => (
-        <div key={b.id} className={"badge" + (S.badges[b.id] ? " got" : "")}>
-          <div className="bi" aria-hidden="true">{b.i}</div><b>{b.n}</b><span>{b.d}</span>
-        </div>
-      ))}
-    </div>
   );
 }
 

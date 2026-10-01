@@ -1,28 +1,31 @@
 "use client";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useApp } from "./AppProvider";
 import { STEPS, viewMeta, type ViewId } from "@/lib/journey";
 import { initials, pct } from "@/lib/state";
 
 export function currentView(path: string): ViewId {
   const last = path.replace(/\/$/, "").split("/").pop();
-  return (!last || last === "app" ? "dashboard" : last) as ViewId;
+  return (!last || last === "app" || last === "preview" ? "dashboard" : last) as ViewId;
 }
 
 export function Shell({ children }: { children: React.ReactNode }) {
-  const { ready, S, demo, go, signOut, exitDemo, hasAccess } = useApp();
-  const router = useRouter();
+  const { ready, S, demo, go, signOut, exitDemo, isAdmin } = useApp();
   const path = usePathname();
   const cur = currentView(path);
   const [railOpen, setRailOpen] = useState(false);
   const spineRef = useRef<HTMLDivElement>(null);
   const [fill, setFill] = useState(0);
 
-  // Not signed in: back to the gate (or account creation if they already paid).
+  // Back from Stripe.
+  const { toast } = useApp();
   useEffect(() => {
-    if (ready && !S.user) router.replace(hasAccess() ? "/signin?tab=up" : "/");
-  }, [ready, S.user, hasAccess, router]);
+    const paid = new URLSearchParams(location.search).get("paid");
+    if (paid === "premium") setTimeout(() => toast("Welcome to the 90 days. Book your kickoff call to get started."), 500);
+    else if (paid) setTimeout(() => toast("Payment received. You are all set."), 500);
+  }, [toast]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setRailOpen(false); };
@@ -99,6 +102,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
               <span>{S.streak.n === 1 ? "day streak" : "days in a row"}<br />Keep it going.</span>
             </div>
             <button className="btn btn-g btn-sm btn-full" onClick={signOut}>Sign out</button>
+            {isAdmin ? <Link className="btn btn-sm btn-full" href="/admin" style={{ color: "var(--mint)", marginTop: 6 }}>Admin panel</Link> : null}
           </div>
         </aside>
 

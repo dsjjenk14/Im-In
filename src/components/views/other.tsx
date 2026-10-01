@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import { useApp } from "../AppProvider";
 import { AdSlot, Note, TA } from "../ui";
 import { HeroDoodle } from "../ui";
-import { BadgeGrid } from "./act5";
-import { ADS, BOOK_LINK, CONTACT, priceLabel } from "@/config/site";
+import { BadgeGrid } from "../BadgeGrid";
+import { BOOK_LINK, CONTACT, priceLabel } from "@/config/site";
 import { BADGES, STEPS } from "@/lib/journey";
-import { CHALLENGES } from "@/lib/content";
+import { CHALLENGES } from "@/lib/content/challenges";
 import { firstName, pct, txt } from "@/lib/state";
 import { buy } from "@/lib/checkout";
 
@@ -84,7 +84,7 @@ export function Dashboard() {
           <button className="btn btn-t" onClick={() => go("premium")}>See the coaching option →</button></div>
       )}
 
-      <AdSlot cfg={ADS[1]} slot={1} />
+      <AdSlot slot={1} />
 
       <div className="grid2">
         <div className="card">
@@ -220,7 +220,7 @@ function PremiumUpsell() {
 const SUBJECTS = ["Resume feedback", "Interview advice", "Which path should I take", "Offer or negotiation question", "Something else"];
 
 export function Contact() {
-  const { S, toast } = useApp();
+  const { S, toast, celebrate, demo } = useApp();
   const [name, setName] = useState(S.user!.name);
   const [email, setEmail] = useState(S.user!.email);
   const [subj, setSubj] = useState(SUBJECTS[0]);
@@ -228,14 +228,25 @@ export function Contact() {
   const msgRef = useRef<HTMLTextAreaElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
 
-  const send = () => {
-    const m = msg.trim(), e = email.trim();
+  const [sending, setSending] = useState(false);
+  const mailFallback = (n: string, e: string) => {
+    window.location.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("HR Blueprint · " + subj) +
+      "&body=" + encodeURIComponent("From: " + n + " (" + e + ")\n\n" + msg.trim());
+  };
+  const send = async () => {
+    const m = msg.trim(), e = email.trim(), n = name.trim();
     if (!m) { toast("Add a message first."); msgRef.current?.focus(); return; }
     if (!e || e.indexOf("@") < 0) { toast("Add a valid email so I can reply."); emailRef.current?.focus(); return; }
-    // Phase 5 sends this through Resend and saves it to the messages table.
-    window.location.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent("HR Blueprint · " + subj) +
-      "&body=" + encodeURIComponent("From: " + name.trim() + " (" + e + ")\n\n" + m);
-    toast("Opening your email app.");
+    if (demo) { mailFallback(n, e); toast("Opening your email app."); return; }
+    setSending(true);
+    try {
+      const r = await fetch("/api/messages", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name: n, email: e, subject: subj, body: m }) });
+      if (r.ok) { setMsg(""); toast("Sent. I will get back to you."); celebrate(); }
+      else { toast("That did not send. Opening your email app instead."); mailFallback(n, e); }
+    } catch {
+      toast("No connection. Opening your email app instead."); mailFallback(n, e);
+    }
+    setSending(false);
   };
 
   return (
@@ -275,9 +286,9 @@ export function Contact() {
           </select></div>
         <div className="field"><label htmlFor="mfMsg">Message</label>
           <textarea className="inp" id="mfMsg" rows={5} ref={msgRef} placeholder="Tell me where you are stuck." value={msg} onChange={(e) => setMsg(e.target.value)} /></div>
-        <button className="btn btn-p" onClick={send}>Send message</button>
+        <button className="btn btn-p" disabled={sending} onClick={() => { void send(); }}>{sending ? "Sending..." : "Send message"}</button>
         <p style={{ fontSize: 12, color: "var(--slate-2)", marginTop: 12, lineHeight: 1.5 }}>
-          Set your Formspree ID at the top of this file and messages arrive in your inbox. Until then, this opens the visitor&apos;s email app with everything filled in.</p>
+          Messages come straight to my inbox. I read every one and reply by email.</p>
       </div>
     </>
   );

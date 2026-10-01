@@ -1,5 +1,5 @@
-import { ViewSwitch } from "@/components/views/ViewSwitch";
+import { Dashboard } from "@/components/views/other";
 
 export default function DashboardPage() {
-  return <ViewSwitch id="dashboard" />;
+  return <Dashboard />;
 }

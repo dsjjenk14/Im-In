@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { Acc, Band, Bridge, Chk, FootNav, HeroDoodle, Inp, Mark, Note, Rec, TA, Tpl } from "../ui";
 import { Squiggle } from "../Doodle";
-import { BgGame, ChoiceGame } from "../games";
-import { IVQ, SCREEN_GAME, SCREEN_QS } from "@/lib/content";
+import { ChoiceGame } from "../games/choice";
+import { BgGame } from "../games/paid";
+import { IVQ, SCREEN_GAME, SCREEN_QS } from "@/lib/content/paid";
 import { txt } from "@/lib/state";
 
 /* ───── STEP 14 · PHONE SCREEN LAB ───── */
