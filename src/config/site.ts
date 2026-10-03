@@ -4,7 +4,7 @@
  * (Stripe prices are created from these values in Phase 4.)
  */
 export const PRICES = {
-  basic: { cents: 1500, name: "The Blueprint" },
+  basic: { cents: 3500, name: "The Blueprint" },
   premium: { cents: 49700, name: "Blueprint + 90 Days With Me" },
 } as const;
 
