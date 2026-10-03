@@ -5,7 +5,7 @@
  */
 export const PRICES = {
   basic: { cents: 3500, name: "The Blueprint" },
-  premium: { cents: 49700, name: "Blueprint + 90 Days With Me" },
+  premium: { cents: 20000, name: "Blueprint + 90 Days With Me" },
 } as const;
 
 export type Tier = keyof typeof PRICES;
