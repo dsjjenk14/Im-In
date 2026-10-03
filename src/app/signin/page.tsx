@@ -48,7 +48,7 @@ export default function SignIn() {
         <p className="auth-sub">I&apos;ve spent eight years on the hiring side, across several very different industries. I know exactly what gets someone hired, because I&apos;m the one making the call. This is everything I&apos;d tell you if we were sitting across from each other.</p>
         <div className="auth-stats">
           <div className="astat"><b>8</b><span>Years in talent acquisition</span></div>
-          <div className="astat"><b>50</b><span>Hires in 2.5 years</span></div>
+          <div className="astat"><b>65</b><span>Hires in 2.5 years</span></div>
           <div className="astat"><b>~90%</b><span>Offer acceptance rate</span></div>
           <div className="astat"><b>90→55</b><span>Days to fill, rebuilt</span></div>
         </div>
