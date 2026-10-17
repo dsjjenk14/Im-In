@@ -300,12 +300,12 @@ export function OfferMore() {
         <h3 className="sec">Total compensation, roughly</h3>
         <p className="sub">Base is not the whole picture. Fill these in and see what the offer is actually worth to you each year.</p>
         <div className="row2">
-          <div className="field"><label>Base salary</label><Inp k="m_tc_base" ph="54000" label="Base salary" /></div>
+          <div className="field"><label>Base salary</label><Inp k="m_tc_base" ph="54000" label="Base salary on the offer" /></div>
           <div className="field"><label>Expected annual bonus, if any</label><Inp k="m_tc_bonus" ph="0" label="Expected annual bonus" /></div>
         </div>
         <div className="row2">
           <div className="field"><label>401k match, percent of salary</label><Inp k="m_tc_match" ph="4" label="401k match percent" /></div>
-          <div className="field"><label>PTO days</label><Inp k="m_tc_pto" ph="15" label="PTO days" /></div>
+          <div className="field"><label>PTO days</label><Inp k="m_tc_pto" ph="15" label="PTO days on the offer" /></div>
         </div>
         <div className="row2">
           <div className="field"><label>Your monthly health premium</label><Inp k="m_tc_prem" ph="150" label="Monthly health premium" /></div>
