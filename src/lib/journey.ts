@@ -5,7 +5,7 @@ export type StepId =
   | "phone" | "interview" | "refs" | "offer" | "ninety"
   | "firstyear" | "grad" | "next";
 
-export type ViewId = StepId | "dashboard" | "premium" | "contact";
+export type ViewId = StepId | "dashboard" | "premium" | "contact" | "sprint";
 
 export interface Step {
   id: StepId;
@@ -39,12 +39,13 @@ export const STEPS: Step[] = [
   { id: "next", part: "Act 5 · Grow", nav: "Next Steps", eyebrow: "Step 21", title: "Next Steps" },
 ];
 
-export const VIEW_IDS: ViewId[] = ["dashboard", "premium", "contact", ...STEPS.map((s) => s.id)];
+export const VIEW_IDS: ViewId[] = ["dashboard", "premium", "contact", "sprint", ...STEPS.map((s) => s.id)];
 
 export function viewMeta(id: ViewId): { eyebrow: string; title: string } {
   if (id === "dashboard") return { eyebrow: "Dashboard", title: "Home base" };
   if (id === "premium") return { eyebrow: "Premium", title: "Work With Me" };
   if (id === "contact") return { eyebrow: "Always open", title: "Contact Dominique" };
+  if (id === "sprint") return { eyebrow: "Daily practice", title: "The 30 Day Sprint" };
   return STEPS.find((s) => s.id === id)!;
 }
 
@@ -68,6 +69,7 @@ export const BADGES: Badge[] = [
   { id: "screener", i: "☎️", n: "Screen Ready", d: "Beat the phone screen game" },
   { id: "vouched", i: "🛡️", n: "Vouched For", d: "Lined up your references" },
   { id: "rooted", i: "🌳", n: "Rooted", d: "Planned your first year" },
+  { id: "sprinter", i: "🏃", n: "Thirty Days", d: "Finished the 30 day sprint" },
   { id: "grad", i: "🎓", n: "Graduate", d: "Completed the journey" },
 ];
 

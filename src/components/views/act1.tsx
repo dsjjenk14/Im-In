@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { Acc, Band, Bridge, Chk, FootNav, HeroDoodle, Mark, Note, Rec, TA } from "../ui";
 import { Squiggle } from "../Doodle";
+import { AssessMore, DecoderMore, IsRightMore, StoryMore, WelcomeMore } from "./more/act1";
 import { ChoiceGame } from "../games";
 import { firstName } from "@/lib/state";
 import { DECODE_MAP, DECODE_QZ, IND_OPEN, QZ, QZR } from "@/lib/content";
@@ -64,6 +65,7 @@ export function Welcome() {
           <TA k="reflect1" ph="I want this because..." rows={4} />
         </Note>
       </div>
+      <WelcomeMore />
       <FootNav id="welcome" />
     </>
   );
@@ -109,6 +111,7 @@ export function Story() {
           <p style={{ marginTop: 12 }}>That list is the single most valuable thing on this page. We come back to it in the Networking Hub.</p>
         </Note>
       </div>
+      <StoryMore />
       <FootNav id="story" />
     </>
   );
@@ -267,6 +270,7 @@ export function IsRight() {
           "Pay that lets me stay long enough to learn before I have to move again",
         ]} />
       </div>
+      <IsRightMore />
       <FootNav id="isright" />
     </>
   );
@@ -335,14 +339,14 @@ export function Decoder() {
 
       <div className="card">
         <Mark icon="star" label="Quick game" />
-        <h3 className="sec">Decode five real postings</h3>
-        <p className="sub">Five questions. Prove you can read between the lines of a job title.</p>
+        <h3 className="sec">Decode ten real postings</h3>
+        <p className="sub">Ten questions. Prove you can read between the lines of a job title.</p>
         <ChoiceGame
           questions={DECODE_QZ} unit="Question" nextLabel="Next →"
           rightWord="Correct." wrongWord="Not quite."
-          onEnd={(score) => { if (score >= 4) update((s) => ({ ...s, badges: { ...s.badges, decoder: true } })); }}
+          onEnd={(score) => { if (score >= 8) update((s) => ({ ...s, badges: { ...s.badges, decoder: true } })); }}
           end={(score) => ({
-            msg: score >= 4 ? "You can read a job title now." : "Go back through the translator once more.",
+            msg: score >= 8 ? "You can read a job title now." : "Go back through the translator once more.",
             sub: "The titles change by industry. The job underneath is the same. Search all the names.",
           })}
         />
@@ -354,6 +358,7 @@ export function Decoder() {
         <TA k="decodeTerms" ph="People Partner, Talent Partner, Recruiting Coordinator, People Ops Coordinator..." rows={3} label="Your search terms" />
         <Band icon="bulb" color="#8EDBC2"><b>Save five to eight search terms, not one.</b> Set a job alert for each. The person who searches five titles sees five times the roles, and most of your competition is searching one.</Band>
       </div>
+      <DecoderMore />
       <FootNav id="decoder" />
     </>
   );
@@ -442,6 +447,7 @@ function AssessResult() {
         </tbody></table>
         <Rec><p>You may start at the lower end of a range. That is normal and it is fine. What is not fine is staying there quietly. Document what you contribute and have the conversation about moving toward the midpoint within your first 18 to 24 months.</p></Rec>
       </div>
+      <AssessMore />
       <FootNav id="assess" />
     </>
   );

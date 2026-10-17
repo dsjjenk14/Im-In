@@ -97,6 +97,7 @@ export function checkBadges(S: AppState): { state: AppState; unlocked: boolean }
   if (ans >= 5) b.ready = true;
   // Not in the prototype (the badge could never be earned): all 7 first year milestones checked.
   if ([0, 1, 2, 3, 4, 5, 6].every((i) => S.chk["fymiles_" + i])) b.rooted = true;
+  if (Array.from({ length: 30 }, (_, i) => S.chk["sprint_d" + (i + 1)]).every(Boolean)) b.sprinter = true;
   if (S.done.grad) b.grad = true;
   const unlocked = Object.keys(b).length > before;
   return { state: { ...S, badges: b }, unlocked };

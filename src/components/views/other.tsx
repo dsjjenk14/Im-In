@@ -5,6 +5,7 @@ import { useApp } from "../AppProvider";
 import { AdSlot, Note, TA } from "../ui";
 import { HeroDoodle } from "../ui";
 import { BadgeGrid } from "./act5";
+import { PremiumMore, SprintCard } from "./more/other";
 import { ADS, BOOK_LINK, CONTACT, priceLabel } from "@/config/site";
 import { BADGES, STEPS } from "@/lib/journey";
 import { CHALLENGES } from "@/lib/content";
@@ -42,7 +43,8 @@ export function Dashboard() {
   const ivN = Object.keys(S.txt).filter((k) => k.indexOf("iv_") === 0 && T(k).length > 25).length;
   const ivP = Math.min(100, Math.round((ivN / 6) * 100));
   const nextStepObj = STEPS.find((s) => !S.done[s.id]) ?? STEPS[STEPS.length - 1];
-  const wk = CHALLENGES[new Date().getDay() % CHALLENGES.length];
+  const today = new Date();
+  const wk = CHALLENGES[(today.getDate() + today.getMonth() * 31) % CHALLENGES.length];
 
   const rows = Object.keys(NOTE_LABELS).filter((k) => T(k).trim().length > 0).map((k) => ({ k, label: NOTE_LABELS[k] }));
   Object.keys(S.txt).forEach((k) => { if (k.indexOf("iv_") === 0 && T(k).trim()) rows.push({ k, label: "Interview answer" }); });
@@ -72,6 +74,8 @@ export function Dashboard() {
           <button className="btn btn-t" onClick={() => go(nextStepObj.id)}>Continue learning →</button>
         </div>
       </div>
+
+      <SprintCard />
 
       {isPremium ? (
         <div className="card"><span className="prem-badge">Premium · active</span>
@@ -174,6 +178,7 @@ function PremiumHub() {
         <div className="field"><label>My private notes from our sessions</label>
           <TA k="premNotes" ph="Keep what we talk about here so nothing gets lost..." rows={5} label="My private notes from our sessions" /></div>
       </div>
+      <PremiumMore />
       <div className="foot-nav"><button className="btn btn-g" onClick={() => go("dashboard")}>← Back to dashboard</button><button className="btn btn-t" onClick={() => go("contact")}>Contact →</button></div>
     </>
   );

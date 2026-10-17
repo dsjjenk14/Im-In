@@ -1,3 +1,6 @@
+import { MORE_DECODE_MAP, MORE_DECODE_QZ } from "./content/extra-act1";
+import { MORE_BG_GAME, MORE_GAME, MORE_IVQ, MORE_SCREEN_GAME } from "./content/extra-paid";
+import { MORE_CHALLENGES } from "./content/extra-challenges";
 /** Data tables from the prototype, word for word. */
 
 export const QZ: { q: string; a: [string, string][] }[] = [
@@ -42,6 +45,7 @@ export const DECODE_MAP = [
   { base: "Recruiting Coordinator", tech: "Recruiting Coordinator, TA Coordinator", law: "Legal Recruiting Assistant, Recruiting Coordinator", gov: "HR Assistant (OA)", health: "Talent Acquisition Coordinator", startup: "Recruiting Ops, People Coordinator" },
   { base: "HR Manager", tech: "People Manager, Head of People (small co)", law: "HR Manager, Director of Administration", gov: "Supervisory HR Specialist", health: "HR Manager, Employee Relations Manager", startup: "Head of People, People Lead" },
   { base: "HR Business Partner", tech: "People Partner, HRBP", law: "HR Business Partner, Practice Group HR Lead", gov: "Human Resources Officer", health: "HRBP, HR Consultant", startup: "People Partner" },
+  ...MORE_DECODE_MAP,
 ];
 
 export const IND_OPEN = [
@@ -62,6 +66,7 @@ export const DECODE_QZ: ChoiceQ[] = [
   { q: "Which of these is usually the FASTEST door in for a career changer?", a: [["A staffing agency", "right"], ["A federal agency", "wrong"], ["A large law firm, direct", "wrong"], ["A FAANG tech company", "wrong"]], e: "Staffing agencies hire for hustle and convert temp to permanent constantly. It is the door I walked through, and the one most people overlook." },
   { q: "A startup posts \"Founding Recruiter, wear many hats.\" Good or bad sign for a career changer?", a: [["Good, they cannot be picky and value range", "right"], ["Bad, they only want experts", "wrong"], ["Bad, it is a scam", "wrong"], ["Neutral", "wrong"]], e: "\"Wear many hats\" usually means they need someone capable and adaptable more than someone credentialed. That is often you." },
   { q: "In healthcare, what should you probably get while applying?", a: [["A certification like aPHR", "right"], ["A law degree", "wrong"], ["Nothing, they do not care", "wrong"], ["A nursing license", "wrong"]], e: "Healthcare tends to want some proof you are serious. An aPHR while you apply signals commitment and helps you clear the first screen." },
+  ...MORE_DECODE_QZ,
 ];
 
 export const SCREEN_QS = [
@@ -78,6 +83,7 @@ export const SCREEN_GAME: ChoiceQ[] = [
   { q: "The screen is scheduled for 15 minutes. You should plan to talk for about?", a: [["Half the time, and listen the other half", "right"], ["The whole 15 minutes, show enthusiasm", "wrong"], ["As little as possible", "wrong"], ["However long they let you", "wrong"]], e: "A screen is a conversation, not a monologue. If you talk the whole time, I learn you cannot read a room. Answer, then let me lead." },
   { q: "You do not know an answer on the screen. Best response?", a: [["Say so plainly and say how fast you learn", "right"], ["Make something up and hope", "wrong"], ["Go silent", "wrong"], ["Change the subject", "wrong"]], e: "A bluff falls apart on the follow up. \"I have not done that, here is how quickly I picked up the last new thing\" beats a fake answer every time." },
   { q: "End of the screen. What is the single best thing to do?", a: [["Ask what the next step and timeline are", "right"], ["Just say thanks and hang up", "wrong"], ["Ask if you got the job", "wrong"], ["Immediately start negotiating", "wrong"]], e: "Asking about next steps shows you are serious and gives you a date to follow up on. It is the easiest point you can score." },
+  ...MORE_SCREEN_GAME,
 ];
 
 export const BG_GAME: { q: string; v: "clear" | "flag"; e: string }[] = [
@@ -87,6 +93,7 @@ export const BG_GAME: { q: string; v: "clear" | "flag"; e: string }[] = [
   { q: "A reference is a coworker who liked you, not your manager. Acceptable?", v: "clear", e: "Usually fine, especially if a manager is hard to reach. A peer who can speak to your actual work beats a manager who barely remembers you. Just brief them first." },
   { q: "You have a job now and do not want your current boss called. Can you control that?", v: "clear", e: "Yes, and it is normal. \"Please do not contact my current employer until we have an offer\" is a standard, reasonable request that no good recruiter will hold against you." },
   { q: "You got let go from a job two years ago. Will a background check reveal why?", v: "clear", e: "Background checks confirm dates and title, not the reason you left. That story is yours to frame in the interview. The check itself will not out you." },
+  ...MORE_BG_GAME,
 ];
 
 export const GAME: { w: string; s: string; e: string }[] = [
@@ -98,6 +105,7 @@ export const GAME: { w: string; s: string; e: string }[] = [
   { w: "Led a team and completed assigned missions.", s: "Led a 9 person team through a 6 month deployment at 100% readiness.", e: "Military experience gets undersold constantly. Put the numbers on it like any other job." },
   { w: "Communicated with students and parents regularly.", s: "Managed communication for 140 families and resolved 30+ escalations a semester with no formal complaints.", e: "Escalations resolved is employee relations experience. You just have not called it that yet." },
   { w: "Worked to improve processes and efficiency.", s: "Rebuilt the intake process and cut turnaround from 5 days to 2.", e: "\"Improved processes\" is a phrase. \"5 days to 2\" is a fact. Facts get interviews." },
+  ...MORE_GAME,
 ];
 
 export const IVQ = [
@@ -137,6 +145,7 @@ export const IVQ = [
     weak: "I feel like I would be a really good fit and I am a hard worker and a fast learner, so I think I would do well here.",
     strong: "Because I already do a version of this work and I do it well. I keep a lot moving at once, I handle people when they are frustrated, and I follow through. I am reliable and I ramp fast. I would come in and help the team without needing a lot of hand holding.",
     note: "Then ask what the next step is. Tell them straight up that you want the job. It is astonishing how few people do, and it genuinely moves the needle." },
+  ...MORE_IVQ,
 ];
 
 export const PLAN_WEEKS = [
@@ -160,4 +169,5 @@ export const CHALLENGES = [
   "Apply to five roles you are genuinely a strong fit for. Quality over volume this week.",
   "Book one coffee chat. Twenty minutes, phone or video, with somebody in the field.",
   "Say your two minute answer to tell me about yourself out loud five times. Out loud, not in your head.",
+  ...MORE_CHALLENGES,
 ];

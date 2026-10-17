@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { AdSlot, Band, Bridge, Chk, ChkItem, FootNav, HeroDoodle, Mark, Note, Rec, Tpl } from "../ui";
 import { Squiggle } from "../Doodle";
+import { ApplyMore, NetworkMore, PlanMore } from "./more/act3";
 import { ADS } from "@/config/site";
 import { ASTAGES, NSTAGES } from "@/lib/journey";
 import { PLAN_WEEKS } from "@/lib/content";
@@ -79,6 +80,7 @@ export function Plan() {
         <h3 className="sec">The one rule</h3>
         <Band icon="heart" color="#8EDBC2"><b>Do the week you are in, not the whole plan at once.</b> Four tasks a week is doable while you have a job and a life. Twelve weeks of it is a serious job search. Miss a week? You did not fail, you just start the next one. Momentum beats perfection.</Band>
       </div>
+      <PlanMore />
       <FootNav id="plan" />
     </>
   );
@@ -173,6 +175,7 @@ export function Network() {
         ]} />
         <Rec><p>Always ask that last one. One warm introduction opens your next five conversations, and people are far more willing to make an introduction than to hand you a job. Ask for the thing they can actually give you.</p></Rec>
       </div>
+      <NetworkMore />
       <FootNav id="network" />
     </>
   );
@@ -271,6 +274,7 @@ export function Apply() {
         </div>
       </div>
       <AdSlot cfg={ADS[2]} slot={2} />
+      <ApplyMore />
       <FootNav id="apply" />
     </>
   );
