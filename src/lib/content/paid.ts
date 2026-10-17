@@ -1,5 +1,6 @@
 /** Paid content. Only bundled into member pages, never the beta preview. */
 import type { ChoiceQ } from "./act1";
+import { MORE_BG_GAME, MORE_GAME, MORE_IVQ, MORE_SCREEN_GAME } from "./extra-paid";
 
 export const SCREEN_QS = [
   { q: "Walk me through your background.", good: "Ninety seconds, not five minutes. Where you are now, the thread that connects it to this role, and why you are excited. The screen is not the interview. Keep it tight." },
@@ -16,6 +17,7 @@ export const SCREEN_GAME: ChoiceQ[] = [
   { q: "The screen is scheduled for 15 minutes. You should plan to talk for about?", a: [["Half the time, and listen the other half", "right"], ["The whole 15 minutes, show enthusiasm", "wrong"], ["As little as possible", "wrong"], ["However long they let you", "wrong"]], e: "A screen is a conversation, not a monologue. If you talk the whole time, I learn you cannot read a room. Answer, then let me lead." },
   { q: "You do not know an answer on the screen. Best response?", a: [["Say so plainly and say how fast you learn", "right"], ["Make something up and hope", "wrong"], ["Go silent", "wrong"], ["Change the subject", "wrong"]], e: "A bluff falls apart on the follow up. \"I have not done that, here is how quickly I picked up the last new thing\" beats a fake answer every time." },
   { q: "End of the screen. What is the single best thing to do?", a: [["Ask what the next step and timeline are", "right"], ["Just say thanks and hang up", "wrong"], ["Ask if you got the job", "wrong"], ["Immediately start negotiating", "wrong"]], e: "Asking about next steps shows you are serious and gives you a date to follow up on. It is the easiest point you can score." },
+  ...MORE_SCREEN_GAME,
 ];
 
 
@@ -26,6 +28,7 @@ export const BG_GAME: { q: string; v: "clear" | "flag"; e: string }[] = [
   { q: "A reference is a coworker who liked you, not your manager. Acceptable?", v: "clear", e: "Usually fine, especially if a manager is hard to reach. A peer who can speak to your actual work beats a manager who barely remembers you. Just brief them first." },
   { q: "You have a job now and do not want your current boss called. Can you control that?", v: "clear", e: "Yes, and it is normal. \"Please do not contact my current employer until we have an offer\" is a standard, reasonable request that no good recruiter will hold against you." },
   { q: "You got let go from a job two years ago. Will a background check reveal why?", v: "clear", e: "Background checks confirm dates and title, not the reason you left. That story is yours to frame in the interview. The check itself will not out you." },
+  ...MORE_BG_GAME,
 ];
 
 
@@ -38,6 +41,7 @@ export const GAME: { w: string; s: string; e: string }[] = [
   { w: "Led a team and completed assigned missions.", s: "Led a 9 person team through a 6 month deployment at 100% readiness.", e: "Military experience gets undersold constantly. Put the numbers on it like any other job." },
   { w: "Communicated with students and parents regularly.", s: "Managed communication for 140 families and resolved 30+ escalations a semester with no formal complaints.", e: "Escalations resolved is employee relations experience. You just have not called it that yet." },
   { w: "Worked to improve processes and efficiency.", s: "Rebuilt the intake process and cut turnaround from 5 days to 2.", e: "\"Improved processes\" is a phrase. \"5 days to 2\" is a fact. Facts get interviews." },
+  ...MORE_GAME,
 ];
 
 
@@ -78,6 +82,7 @@ export const IVQ = [
     weak: "I feel like I would be a really good fit and I am a hard worker and a fast learner, so I think I would do well here.",
     strong: "Because I already do a version of this work and I do it well. I keep a lot moving at once, I handle people when they are frustrated, and I follow through. I am reliable and I ramp fast. I would come in and help the team without needing a lot of hand holding.",
     note: "Then ask what the next step is. Tell them straight up that you want the job. It is astonishing how few people do, and it genuinely moves the needle." },
+  ...MORE_IVQ,
 ];
 
 

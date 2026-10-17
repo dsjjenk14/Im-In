@@ -7,7 +7,11 @@ import type { Ads } from "@/components/AppProvider";
 export async function loadAds(): Promise<Ads> {
   const ads: Ads = { 1: null, 2: null };
   if (!supabaseConfigured()) return ads;
-  const { data } = await createAdmin().from("ads").select("slot, headline, text, cta, url").eq("active", true);
-  (data ?? []).forEach((a) => { if (a.slot === 1 || a.slot === 2) ads[a.slot as 1 | 2] = { headline: a.headline, text: a.text, cta: a.cta, url: a.url }; });
+  try {
+    const { data } = await createAdmin().from("ads").select("slot, headline, text, cta, url").eq("active", true);
+    (data ?? []).forEach((a) => { if (a.slot === 1 || a.slot === 2) ads[a.slot as 1 | 2] = { headline: a.headline, text: a.text, cta: a.cta, url: a.url }; });
+  } catch (e) {
+    console.error("[ads] could not load ad slots", e); // an ad problem must never take a page down
+  }
   return ads;
 }

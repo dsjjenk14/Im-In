@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { Acc, Band, Bridge, Chk, FootNav, HeroDoodle, Inp, Mark, Note, Rec, TA, Tpl, copyText, downloadDoc, esc } from "../ui";
 import { Squiggle } from "../Doodle";
+import { CoverMore, LinkedInMore, PsychMore, ResumeMore, SkillsMore } from "./more/act2";
 import { BulletGame } from "../games/paid";
 import { Rung } from "./act1";
 import { initials, jobCount, txt, type AppState } from "@/lib/state";
@@ -69,6 +70,7 @@ export function Psych() {
           "Follow up every few weeks so I stay top of mind when something opens",
         ]} />
       </div>
+      <PsychMore />
       <FootNav id="psych" />
     </>
   );
@@ -139,6 +141,7 @@ export function Skills() {
           <TA k="skillNote" ph={"Weak version:\n\nStrong version:"} rows={6} label="Your skill translation" />
         </Note>
       </div>
+      <SkillsMore />
       <FootNav id="skills" />
     </>
   );
@@ -256,7 +259,7 @@ export function Resume() {
         <Mark icon="scan" label="Play first, then build" />
         <h3 className="sec">You be the recruiter</h3>
         <Squiggle />
-        <p className="body">Before you write a single bullet, I want you to sit on my side of the desk for two minutes. Eight rounds. Two candidates each time. <strong>Pick the one you would call.</strong></p>
+        <p className="body">Before you write a single bullet, I want you to sit on my side of the desk for two minutes. Sixteen rounds. Two candidates each time. <strong>Pick the one you would call.</strong></p>
         <BulletGame />
       </div>
 
@@ -340,6 +343,7 @@ export function Resume() {
         <Tpl label="Resume structure" text={"YOUR NAME\nCity, State · Phone · Email · LinkedIn URL\n\nSUMMARY\n[Field] professional with [X] years moving into HR and recruiting. Background in [high volume communication / coordination / records]. Known for [the specific thing you are actually known for].\n\nEXPERIENCE\nJob Title | Company | Month Year to Month Year\n- Your bullet 1, with the number\n- Your bullet 2, with the number\n- Your bullet 3, with the number\n\nSKILLS\nCandidate Coordination · Onboarding Support · ATS Navigation\nRecords Management · Scheduling · Cross-functional Collaboration\n\nEDUCATION\nDegree | Institution | Year\nCertifications in progress: aPHR, SHRM-CP"} />
         <Rec><p>Write the cover letter. I know everyone says they are dead. They are not, and in a market this crowded it is one of the only places left where you get to sound like a person instead of getting sorted by a keyword scanner. Three or four paragraphs. Why this role, why this company, and one specific thing from your background that maps to what they need.</p></Rec>
       </div>
+      <ResumeMore />
       <FootNav id="resume" />
     </>
   );
@@ -455,6 +459,7 @@ export function Cover() {
         ]} />
         <Note kind="mistake" label="Common mistakes"><p>Addressing it &quot;To Whom It May Concern&quot; when the recruiter&apos;s name is on the LinkedIn job post. Spending the whole letter on what you want instead of what you bring. And sending the same letter to ten companies with the name swapped, which I promise is more obvious than you think.</p></Note>
       </div>
+      <CoverMore />
       <FootNav id="cover" />
     </>
   );
@@ -529,6 +534,7 @@ export function LinkedIn() {
         <Tpl label="LinkedIn outreach" text="Hi [Name], I saw you are a recruiter at [Company] and noticed we are both [alumni of X / former Y / connected through Z]. I am in the middle of a transition into HR and would love to hear how you got into recruiting if you have five minutes for a quick call." />
         <Note kind="win" label="Why this works"><p>It is a few sentences, not a paragraph that reads like a cover letter. It gives one real point of connection and makes a small ask. People respond to that because it does not feel like a mass message, and it is not one. Send ten of these and you will get three replies. That is a good week.</p></Note>
       </div>
+      <LinkedInMore />
       <FootNav id="linkedin" />
     </>
   );

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useApp } from "../AppProvider";
 import { Acc, Band, Bridge, Chk, FootNav, HeroDoodle, Inp, Mark, Note, Rec, TA, Tpl } from "../ui";
 import { Squiggle } from "../Doodle";
+import { InterviewMore, NinetyMore, OfferMore, PhoneMore, RefsMore } from "./more/act4";
 import { ChoiceGame } from "../games/choice";
 import { BgGame } from "../games/paid";
 import { IVQ, SCREEN_GAME, SCREEN_QS } from "@/lib/content/paid";
@@ -58,11 +59,11 @@ export function Phone() {
       <div className="card">
         <Mark icon="star" label="Game" />
         <h3 className="sec">Pass the screen</h3>
-        <p className="sub">Five calls, five moments where people get cut. Pick the answer that survives.</p>
+        <p className="sub">Ten calls, ten moments where people get cut. Pick the answer that survives.</p>
         <ChoiceGame questions={SCREEN_GAME} unit="Call" nextLabel="Next call →" rightWord="Survived." wrongWord="Cut."
-          onEnd={(score) => { if (score >= 4) update((s) => ({ ...s, badges: { ...s.badges, screener: true } })); }}
+          onEnd={(score) => { if (score >= 8) update((s) => ({ ...s, badges: { ...s.badges, screener: true } })); }}
           end={(score) => ({
-            msg: score >= 4 ? "You would survive my screens." : "Run it again. The screen rewards calm and brevity.",
+            msg: score >= 8 ? "You would survive my screens." : "Run it again. The screen rewards calm and brevity.",
             sub: "Short answers, a real salary range, nothing negative, and always ask about next steps.",
           })} />
       </div>
@@ -88,6 +89,7 @@ export function Phone() {
           "I know it is 15 minutes and I will not ramble",
         ]} />
       </div>
+      <PhoneMore />
       <FootNav id="phone" />
     </>
   );
@@ -254,6 +256,7 @@ export function Interview() {
         ]} />
         <Note kind="win" label="Quick win"><p>It is okay to take a second before you answer. Thinking looks better than rambling. And smile once at the start. One breath before you speak reads as confidence, not hesitation.</p></Note>
       </div>
+      <InterviewMore />
       <FootNav id="interview" />
     </>
   );
@@ -320,7 +323,7 @@ export function Refs() {
       <div className="card">
         <Mark icon="star" label="Game" />
         <h3 className="sec">Clears or flags?</h3>
-        <p className="sub">Six background-check scenarios. Guess which ones will get flagged. Some will surprise you.</p>
+        <p className="sub">Twelve background-check scenarios. Guess which ones will get flagged. Some will surprise you.</p>
         <BgGame />
       </div>
 
@@ -335,6 +338,7 @@ export function Refs() {
         ]} />
         <Note kind="mistake" label="The one that ends offers"><p>I saw a post telling people to give two weeks notice the moment they are &quot;in talks.&quot; Please do not. I have watched an offer get pulled after a reference did not check out the way everyone assumed. Until you have signed something and cleared every contingency, you still have a job, and you keep showing up to it.</p></Note>
       </div>
+      <RefsMore />
       <FootNav id="refs" />
     </>
   );
@@ -432,6 +436,7 @@ export function Offer() {
           "I have not given notice at my current job yet",
         ]} />
       </div>
+      <OfferMore />
       <FootNav id="offer" />
     </>
   );
@@ -505,6 +510,7 @@ export function Ninety() {
         ]} />
         <Rec><p>When you do go, go clean. Give proper notice and protect your references while you are still there. HR is a far smaller world than it looks, and how you exit becomes part of your reputation. I have had hiring managers call me about a candidate and mention how someone left a job six years ago.</p></Rec>
       </div>
+      <NinetyMore />
       <FootNav id="ninety" />
     </>
   );

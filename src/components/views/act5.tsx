@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useApp } from "../AppProvider";
 import { Band, Bridge, Chk, FootNav, HeroDoodle, Mark, Note, Rec, TA, Tpl } from "../ui";
 import { Doodle, Squiggle } from "../Doodle";
+import { FirstYearMore, GradMore, NextMore } from "./more/act5";
 import { BADGES } from "@/lib/journey";
 import { firstName } from "@/lib/state";
 import { BadgeGrid } from "../BadgeGrid";
@@ -73,6 +74,7 @@ export function FirstYear() {
           <TA k="fy_vision" ph="A year from now I want to be..." rows={3} label="A year from now" />
         </Note>
       </div>
+      <FirstYearMore />
       <FootNav id="firstyear" />
     </>
   );
@@ -126,6 +128,7 @@ export function Grad() {
           <p>You were never unqualified. You were undertranslated. Now go get the job.</p>
         </Note>
       </div>
+      <GradMore />
       <FootNav id="grad" />
     </>
   );
@@ -183,6 +186,7 @@ export function Next() {
           <button className="btn btn-g" onClick={() => go("dashboard")}>Back to dashboard</button>
         </div>
       </div>
+      <NextMore />
       <FootNav id="next" />
     </>
   );

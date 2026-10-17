@@ -88,6 +88,11 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 );
               })}
             </div>
+            <div className="rail-lbl">Daily practice</div>
+            <div className="spine" style={{ paddingBottom: 6 }}>
+              <button className={"step" + (cur === "sprint" ? " on" : "")} onClick={() => nav("sprint")} aria-current={cur === "sprint" ? "page" : undefined}>
+                <span className="step-dot">30</span><span className="step-txt">30-Day Sprint</span></button>
+            </div>
             <div className="rail-lbl">Always open</div>
             <div className="spine" style={{ paddingBottom: 14 }}>
               <button className={"step" + (cur === "premium" ? " on" : "")} onClick={() => nav("premium")}>

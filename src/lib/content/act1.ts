@@ -1,3 +1,4 @@
+import { MORE_DECODE_MAP, MORE_DECODE_QZ } from "./extra-act1";
 /** Act 1 content (open in the beta preview). Word for word from the prototype. */
 
 export interface ChoiceQ { q: string; a: [string, "right" | "wrong"][]; e: string }
@@ -46,6 +47,7 @@ export const DECODE_MAP = [
   { base: "Recruiting Coordinator", tech: "Recruiting Coordinator, TA Coordinator", law: "Legal Recruiting Assistant, Recruiting Coordinator", gov: "HR Assistant (OA)", health: "Talent Acquisition Coordinator", startup: "Recruiting Ops, People Coordinator" },
   { base: "HR Manager", tech: "People Manager, Head of People (small co)", law: "HR Manager, Director of Administration", gov: "Supervisory HR Specialist", health: "HR Manager, Employee Relations Manager", startup: "Head of People, People Lead" },
   { base: "HR Business Partner", tech: "People Partner, HRBP", law: "HR Business Partner, Practice Group HR Lead", gov: "Human Resources Officer", health: "HRBP, HR Consultant", startup: "People Partner" },
+  ...MORE_DECODE_MAP,
 ];
 
 
@@ -66,6 +68,7 @@ export const DECODE_QZ: ChoiceQ[] = [
   { q: "Which of these is usually the FASTEST door in for a career changer?", a: [["A staffing agency", "right"], ["A federal agency", "wrong"], ["A large law firm, direct", "wrong"], ["A FAANG tech company", "wrong"]], e: "Staffing agencies hire for hustle and convert temp to permanent constantly. It is the door I walked through, and the one most people overlook." },
   { q: "A startup posts \"Founding Recruiter, wear many hats.\" Good or bad sign for a career changer?", a: [["Good, they cannot be picky and value range", "right"], ["Bad, they only want experts", "wrong"], ["Bad, it is a scam", "wrong"], ["Neutral", "wrong"]], e: "\"Wear many hats\" usually means they need someone capable and adaptable more than someone credentialed. That is often you." },
   { q: "In healthcare, what should you probably get while applying?", a: [["A certification like aPHR", "right"], ["A law degree", "wrong"], ["Nothing, they do not care", "wrong"], ["A nursing license", "wrong"]], e: "Healthcare tends to want some proof you are serious. An aPHR while you apply signals commitment and helps you clear the first screen." },
+  ...MORE_DECODE_QZ,
 ];
 
 

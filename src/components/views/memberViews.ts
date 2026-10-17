@@ -5,10 +5,11 @@ import { Apply, Network, Plan } from "./act3";
 import { Interview, Ninety, Offer, Phone, Refs } from "./act4";
 import { FirstYear, Grad, Next } from "./act5";
 import { Contact, Dashboard, Premium } from "./other";
+import { Sprint } from "./sprint";
 
 /** Every screen. Only imported by member pages, which are checked on the server first. */
 export const MEMBER_VIEWS: Record<ViewId, () => React.ReactNode> = {
-  dashboard: Dashboard, premium: Premium, contact: Contact,
+  dashboard: Dashboard, premium: Premium, contact: Contact, sprint: Sprint,
   welcome: Welcome, story: Story, isright: IsRight, decoder: Decoder, assess: Assess,
   psych: Psych, skills: Skills, resume: Resume, cover: Cover, linkedin: LinkedIn,
   plan: Plan, network: Network, apply: Apply,

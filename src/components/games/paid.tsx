@@ -39,7 +39,7 @@ export function BulletGame() {
         <>
           <Feedback right={right} word={right ? "Correct." : "Not quite."} text={g.e} />
           <button className="btn btn-t" style={{ marginTop: 14 }} autoFocus onClick={() => {
-            if (i === GAME.length - 1 && score >= 6) update((s) => ({ ...s, badges: { ...s.badges, eye: true } }));
+            if (i === GAME.length - 1 && score >= 12) update((s) => ({ ...s, badges: { ...s.badges, eye: true } }));
             setPicked(null); setI(i + 1);
           }}>{i === GAME.length - 1 ? "See my score →" : "Next round →"}</button>
         </>
@@ -56,7 +56,7 @@ export function BgGame() {
   const [picked, setPicked] = useState<"clear" | "flag" | null>(null);
 
   if (i >= BG_GAME.length) {
-    const msg = score >= 4 ? "You know where the landmines are." : "Worth another look. These end more offers than bad interviews.";
+    const msg = score >= 8 ? "You know where the landmines are." : "Worth another look. These end more offers than bad interviews.";
     return <Score score={score} total={BG_GAME.length} msg={msg}
       sub="Titles and dates get flagged. Unfinished degrees end offers. Everything else you can frame yourself."
       onAgain={() => { setI(0); setScore(0); setPicked(null); }} />;
@@ -75,7 +75,7 @@ export function BgGame() {
         <>
           <Feedback right={right} word={right ? "Right." : "Missed it."} text={q.e} />
           <button className="btn btn-t" style={{ marginTop: 14 }} autoFocus onClick={() => {
-            if (i === BG_GAME.length - 1 && score >= 4) update((s) => ({ ...s, badges: { ...s.badges, vouched: true } }));
+            if (i === BG_GAME.length - 1 && score >= 8) update((s) => ({ ...s, badges: { ...s.badges, vouched: true } }));
             setPicked(null); setI(i + 1);
           }}>{i === BG_GAME.length - 1 ? "See result →" : "Next case →"}</button>
         </>
